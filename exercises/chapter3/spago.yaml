@@ -1,14 +1,13 @@
 package:
   name: chapter3
   dependencies:
-    - console
-    - effect
-    - foldable-traversable
-    - integers
-    - lists
-    - numbers
-    - prelude
-    - test-unit
+    - "console"
+    - "control"
+    - "effect"
+    - "lists"
+    - "maybe"
+    - "prelude"
+    - "test-unit"
   sources:
     - "src/**/*.purs"
     - "test/**/*.purs"
