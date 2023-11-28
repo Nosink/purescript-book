@@ -1,0 +1,22 @@
+package:
+  name: chapter3
+  dependencies:
+    - console
+    - effect
+    - foldable-traversable
+    - integers
+    - lists
+    - numbers
+    - prelude
+    - test-unit
+  sources:
+    - "src/**/*.purs"
+    - "test/**/*.purs"
+  test:
+    dependencies: []
+    main: Test.Main
+  packages: ./packages.dhall
+workspace:
+  extra_packages: {}
+  package_set:
+    registry: 46.0.2
