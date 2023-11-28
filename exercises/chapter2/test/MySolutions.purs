@@ -11,4 +11,4 @@ circleArea :: Number -> Number
 circleArea r = pi * r * r
 
 leftoverCents :: Int -> Int
-leftoverCents a = a `rem` 100
+leftoverCents n = rem n 100
