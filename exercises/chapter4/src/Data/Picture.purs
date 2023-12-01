@@ -19,6 +19,7 @@ data Shape
   | Rectangle Point Number Number
   | Line Point Point
   | Text Point String
+  | Clipped Picture Point Number Number
 
 showShape :: Shape -> String
 showShape (Circle c r) =
@@ -29,6 +30,8 @@ showShape (Line start end) =
   "Line [start: " <> showPoint start <> ", end: " <> showPoint end <> "]"
 showShape (Text loc text) =
   "Text [location: " <> showPoint loc <> ", text: " <> show text <> "]"
+showShape (Clipped _ c w h) =
+  "Clipped [center: " <> showPoint c <> ", width: " <> show w <> ", height: " <> show h <> "]"
 
 exampleLine :: Shape
 exampleLine = Line p1 p2
@@ -52,6 +55,7 @@ getCenter (Circle c r) = c
 getCenter (Rectangle c w h) = c
 getCenter (Line s e) = (s + e) * {x: 0.5, y: 0.5}
 getCenter (Text loc text) = loc
+getCenter (Clipped _ c w h) = c
 
 type Picture = Array Shape
 
@@ -98,7 +102,9 @@ shapeBounds (Text { x, y } _) =
   , bottom: y
   , right:  x
   }
-
+shapeBounds (Clipped pic pt w h) = 
+  intersect (bounds pic) (shapeBounds (Rectangle pt w h))
+  
 union :: Bounds -> Bounds -> Bounds
 union b1 b2 =
   { top:    Number.min b1.top    b2.top

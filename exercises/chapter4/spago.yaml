@@ -1,0 +1,24 @@
+package:
+  name: chapter4
+  dependencies:
+   - "arrays"
+   - "console"
+   - "effect"
+   - "foldable-traversable"
+   - "integers"
+   - "maybe"
+   - "numbers"
+   - "partial"
+   - "prelude"
+   - "test-unit"
+  sources:
+    - "src/**/*.purs"
+    - "test/**/*.purs"
+  test:
+    dependencies: []
+    main: Test.Main
+  packages: ./packages.dhall
+workspace:
+  extra_packages: {}
+  package_set:
+    registry: 46.0.2
